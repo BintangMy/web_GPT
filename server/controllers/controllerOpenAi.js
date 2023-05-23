@@ -20,6 +20,9 @@ class controllerOpenAi {
       res.status(200).json(data?.choices[0].text);
     } catch (error) {
       console.log(error);
+      return res.status(404).json({
+        message: err.message,
+      });
     }
   }
 
@@ -38,6 +41,9 @@ class controllerOpenAi {
       res.status(200).json(data?.choices[0].text);
     } catch (error) {
       console.log(error);
+      return res.status(404).json({
+        message: err.message,
+      });
     }
   }
 
@@ -59,6 +65,9 @@ class controllerOpenAi {
       res.status(200).json(data?.choices[0].text);
     } catch (error) {
       console.log(error);
+      return res.status(404).json({
+        message: err.message,
+      });
     }
   }
 
@@ -78,6 +87,9 @@ class controllerOpenAi {
       res.status(200).json(data?.choices[0].text);
     } catch (error) {
       console.log(error);
+      return res.status(404).json({
+        message: err.message,
+      });
     }
   }
 
@@ -96,6 +108,9 @@ class controllerOpenAi {
       res.status(200).json(data?.data[0].url);
     } catch (error) {
       console.log(error);
+      return res.status(404).json({
+        message: err.message,
+      });
     }
   }
 }
