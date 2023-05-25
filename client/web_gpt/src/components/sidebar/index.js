@@ -59,7 +59,7 @@ const Sidebar = () => {
               !open && "invisible"
             }`}
           >
-            BinGPT
+            UltraGPT
           </h1>
 
           <button

@@ -1,0 +1,5 @@
+export const AI_SUMMARY = "ai/summary"
+export const AI_PARAGRAPH = "ai/paragraph"
+export const AI_CHAT_BOT = "ai/chatbot"
+export const AI_JS_CODING = "ai/jsCoding"
+export const AI_IMAGE_GENERATOR = "ai/imageGenerator"

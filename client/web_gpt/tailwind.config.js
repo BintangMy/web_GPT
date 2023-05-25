@@ -17,9 +17,12 @@ module.exports = {
         'main' : "#10054D",
         'navy' : "#151F62",
         'black' : "#202123",
-        'main-gray' : "#9ca3af"
+        'main-gray' : "#9ca3af",
+        'grayy': "#313a47"
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')({ nocompatible: true }),
+  ],
 }
