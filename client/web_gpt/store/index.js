@@ -3,7 +3,7 @@ import { legacy_createStore as  createStore, combineReducers} from "redux";
 import thunk from "redux-thunk";
 import { openAiReducer } from "./reducer/openAiReducer";
 
-const rootReducer = combineReducer({
+const rootReducer = combineReducers({
     openAi: openAiReducer
 })
 
