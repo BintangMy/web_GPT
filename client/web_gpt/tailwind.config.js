@@ -9,7 +9,17 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{ 
+        Jost: ['Jost', "sans-serif"] 
+      },
+      colors:{
+        'main' : "#10054D",
+        'navy' : "#151F62",
+        'black' : "#202123",
+        'main-gray' : "#9ca3af"
+      }
+    },
   },
   plugins: [],
 }
