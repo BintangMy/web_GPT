@@ -72,8 +72,8 @@ const Sidebar = () => {
 
           <button
             className={`lg:hidden z-90 absolute ${
-              !open ? "-right-10" : "-right-14"
-            }  bg-black w-10 h-10 rounded-lg flex justify-center items-center text-white text-4xl hover:bg-slate-700`}
+              !open ? "-right-10" : "-right-14 bg-black"
+            }  w-10 h-10 rounded-lg flex justify-center items-center text-white text-4xl `}
             onClick={toggleSidebar}
           >
             <span className="text-white">
