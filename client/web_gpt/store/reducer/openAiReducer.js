@@ -7,10 +7,11 @@ import {
 } from "../actionType/openAiType";
 
 const initialState = {
-  chatOpenAi: {},
+  chatOpenAi: {}
 };
 
 export const openAiReducer = (state = initialState, action) => {
+  console.log(action, 'ini data dari reducer swct..........')
   switch (action.type) {
     case AI_SUMMARY:
       return {

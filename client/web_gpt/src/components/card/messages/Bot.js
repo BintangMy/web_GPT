@@ -1,8 +1,9 @@
 import Image from "next/image";
 
 const Bot = ({message, image}) => {
+  
   return (
-    <div className="flex my-3  justify-start gap-2 mr-10">
+    !message ? null : (<div className="flex my-3  justify-start gap-2 mr-10">
       <Image
         loader={({ src }) => src}
         src={image}
@@ -16,7 +17,7 @@ const Bot = ({message, image}) => {
       style={{ whiteSpace: 'pre-line' }}>
         {message}
       </p>
-    </div>
+    </div>)
   );
 };
 

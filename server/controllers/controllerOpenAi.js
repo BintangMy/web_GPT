@@ -8,7 +8,7 @@ class controllerOpenAi {
   static async summary(req, res, next) {
     try {
       const { text } = req.body;
-      console.log(text, "===========================================");
+     
       const { data } = await openai.createCompletion({
         model: "text-davinci-003",
         prompt: `Summarize this \n${text}`,
@@ -19,9 +19,9 @@ class controllerOpenAi {
       if (!data) throw Error;
       res.status(200).json(data?.choices[0].text);
     } catch (error) {
-      console.log(error);
+      console.log(error, 'ini errorrrr');
       return res.status(404).json({
-        message: err.message,
+        message: error.message,
       });
     }
   }
@@ -29,7 +29,7 @@ class controllerOpenAi {
   static async paragraph(req, res, next) {
     try {
       const { text } = req.body;
-      console.log(text);
+      console.log(text, "===============================>>>>>>>>");
       const { data } = await openai.createCompletion({
         model: "text-davinci-003",
         prompt: `write a detail paragraph about \n${text}`,
@@ -37,13 +37,12 @@ class controllerOpenAi {
         temperature: 0.5,
       });
 
-      if (!data) throw Error;
+      if (!data) throw { name: "notFound" }
+      console.log(data, 'ini result dari controller.......')
       res.status(200).json(data?.choices[0].text);
     } catch (error) {
-      console.log(error);
-      return res.status(404).json({
-        message: err.message,
-      });
+      console.log(error, 'ini error controller....')
+      next(error)
     }
   }
 
@@ -66,7 +65,7 @@ class controllerOpenAi {
     } catch (error) {
       console.log(error);
       return res.status(404).json({
-        message: err.message,
+        message: error.message,
       });
     }
   }
@@ -88,7 +87,7 @@ class controllerOpenAi {
     } catch (error) {
       console.log(error);
       return res.status(404).json({
-        message: err.message,
+        message: error.message,
       });
     }
   }
@@ -109,7 +108,7 @@ class controllerOpenAi {
     } catch (error) {
       console.log(error);
       return res.status(404).json({
-        message: err.message,
+        message: error.message,
       });
     }
   }
