@@ -1,6 +1,6 @@
 import Image from "next/image";
 import {FiDownload} from "react-icons/fi"
-const BotImage = ({image}) => {
+const BotImage = ({image, imageAI}) => {
   return (
     <div className="flex justify-start gap-2 my-3 mr-10 relative">
       <Image
@@ -15,7 +15,7 @@ const BotImage = ({image}) => {
       <div className="flex justify-end content-end">
       <Image
         loader={({ src }) => src}
-        src={image}
+        src={imageAI}
         className="rounded-md"
         width={300}
         height={300}

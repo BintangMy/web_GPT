@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { chatPragraph } from "../../../store/actionCreator/openAiCreator";
+import { chatSummary } from "../../../store/actionCreator/openAiCreator";
 import User from "../card/messages/User";
 import Bot from "../card/messages/Bot";
 import ChatBotInput from "../input/ChatBotInput";
 import Footer from "../footer";
 import Warning from "../card/messages/Warning";
 import Profile from "../card/messages/Profile";
+import LoadingMessage from "../loading/LoadingMessage";
 
 const Summary = () => {
   const messageContoh = {
@@ -22,6 +23,7 @@ const Summary = () => {
 
   const [userInput, setUserInput] = useState([]);
   const [conversation, setConversation] = useState([]);
+  const [loading, setLoading] = useState(null)
   const dispatcher = useDispatch();
   const chatOpenAi = useSelector((state) => state.openAi.chatOpenAi);
   const chatUserRef = useRef(null);
@@ -30,12 +32,13 @@ const Summary = () => {
     chatUserRef.current.scrollIntoView({ behavior: "smooth" });
   }, [userInput]);
 
-  const handleInputText = (text) => {
+  const handleInputText = async (text) => {
+    setLoading(true); // Set loading state to true
     const userMessage = { sender: "user", message: text };
     setConversation((prevConversation) => [...prevConversation, userMessage]);
     setUserInput((prevUserInput) => [...prevUserInput, userMessage]);
-
-    dispatcher(chatPragraph(text));
+    await dispatcher(chatSummary(text));
+    setLoading(false); // Set loading state to false
   };
 
   useEffect(() => {
@@ -49,7 +52,7 @@ const Summary = () => {
     <>
       <div className="pt-2 h-screen px-1 bg-gray-700">
         {/* Profile */}
-        <Profile data={messageContoh.dataProfile} />
+        <Profile data={messageContoh.dataProfile} status={loading}/>
         <div className="border-2 lg:ml-72 h-[92%] p-2 flex flex-col border-dashed rounded-lg border-gray-700">
           {/* chats */}
           <div
@@ -61,12 +64,14 @@ const Summary = () => {
             <Bot
               message={messageContoh.bot1}
               image={messageContoh.dataProfile[0]}
+              type ={"statis"}
             />
             {/* User */}
             <User message={messageContoh.user} />
             <Bot
               message={messageContoh.bot2}
               image={messageContoh.dataProfile[0]}
+              type ={"statis"}
             />
             {conversation.map((message, index) => {
               if (message.sender === "user") {
@@ -77,11 +82,13 @@ const Summary = () => {
                     key={index}
                     message={message.message}
                     image={messageContoh.dataProfile[0]}
+                    type ={"dinamis"}
                   />
                 );
               }
               return null;
             })}
+            {loading ? <LoadingMessage image={messageContoh.dataProfile[0]}/> : null}
           </div>
           {/* Input */}
           <ChatBotInput textInput={handleInputText} />

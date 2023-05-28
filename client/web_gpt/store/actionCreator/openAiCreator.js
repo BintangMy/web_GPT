@@ -17,20 +17,22 @@ export const actionSetParagraph = (payload) => {
   };
 };
 
-export const chatPragraph = ( text ) => {
+export const chatPragraph = (text) => {
   console.log(text, '..................... ini dari action creator')
   return async (dispatcher) => {
     try {
-      // const response = { data: "Indonesia, negara kepulauan terbesar di dunia, memiliki keanekaragaman geografi, budaya, dan bahasa. Setelah meraih kemerdekaan pada tahun 1945, Indonesia mengadopsi Pancasila sebagai dasar ideologi negara. Dengan perekonomian yang berkembang pesat, kekayaan alam yang melimpah, dan sektor pariwisata yang menarik, Indonesia juga menghadapi tantangan lingkungan dan kesenjangan ekonomi. Secara politik, Indonesia adalah negara demokratis dengan sistem pemerintahan presidensial. Indonesia aktif dalam hubungan internasional dan menjadi anggota berbagai organisasi regional dan global.Indonesia, negara kepulauan terbesar di dunia, memiliki keanekaragaman geografi, budaya, dan bahasa. Setelah meraih kemerdekaan pada tahun 1945, Indonesia mengadopsi Pancasila sebagai dasar ideologi negara. Dengan perekonomian yang berkembang pesat, kekayaan alam yang melimpah, dan sektor pariwisata yang menarik, Indonesia juga menghadapi tantangan lingkungan dan kesenjangan ekonomi. Secara politik, Indonesia adalah negara demokratis dengan sistem pemerintahan presidensial. Indonesia aktif dalam hubungan internasional dan menjadi anggota berbagai organisasi regional dan global."}
+      // const response = { data: "Indonesia, negara kepulauan terbesar di dunia, memiliki keanekaragaman geografi, budaya, dan bahasa. Setelah meraih kemerdekaan pada tahun 1945, Indonesia mengadopsi Pancasila sebagai dasar ideologi negara. Dengan perekonomian yang berkembang pesat, kekayaan alam yang melimpah, dan sektor pariwisata yang menarik, Indonesia juga menghadapi tantangan lingkungan dan kesenjangan ekonomi. Secara politik, Indonesia adalah negara demokratis dengan sistem pemerintahan presidensial. Indonesia aktif dalam hubungan internasional dan menjadi anggota berbagai organisasi regional dan global.Indonesia, negara kepulauan terbesar di dunia, memiliki keanekaragaman geografi, budaya, dan bahasa. Setelah meraih kemerdekaan pada tahun 1945, Indonesia mengadopsi Pancasila sebagai dasar ideologi negara. Dengan perekonomian yang berkembang pesat, kekayaan alam yang melimpah, dan sektor pariwisata yang menarik, Indonesia juga menghadapi tantangan lingkungan dan kesenjangan ekonomi. Secara politik, Indonesia adalah negara demokratis dengan sistem pemerintahan presidensial. Indonesia aktif dalam hubungan internasional dan menjadi anggota berbagai organisasi regional dan global." }
 
       const response = await axios.post(`${mainUrl}/paragraph`, text);
+
       if (response.status !== 200) {
-        throw new Error("Failed");
+        response.data = "Kami sedang menerima banyak permintaan respon, silakan coba sesaat lagi";
+        dispatcher(actionSetParagraph(response.data)); // Menggunakan actionSetParagraph sebagai action creator
+      } else {
+        dispatcher(actionSetParagraph(response.data)); // Menggunakan actionSetParagraph sebagai action creator
       }
-      console.log(response)
-      dispatcher(actionSetParagraph(response.data))
     } catch (error) {
-      console.log(error);
+      console.log(error, "error action creator.....................");
       throw error;
     }
   };
@@ -38,7 +40,7 @@ export const chatPragraph = ( text ) => {
 
 export const actionSetSummary = (payload) => {
   return {
-    type: AI_PARAGRAPH,
+    type: AI_SUMMARY,
     payload,
   };
 };
@@ -46,13 +48,18 @@ export const actionSetSummary = (payload) => {
 export const chatSummary = (text) => {
   return async (dispatcher) => {
     try {
+      // const response = { data: "Indonesia, negara kepulauan terbesar di dunia, memiliki keanekaragaman geografi, budaya, dan bahasa. Setelah meraih kemerdekaan pada tahun 1945, Indonesia mengadopsi Pancasila sebagai dasar ideologi negara. Dengan perekonomian yang berkembang pesat, kekayaan alam yang melimpah, dan sektor pariwisata yang menarik, Indonesia juga menghadapi tantangan lingkungan dan kesenjangan ekonomi. Secara politik, Indonesia adalah negara demokratis dengan sistem pemerintahan presidensial. Indonesia aktif dalam hubungan internasional dan menjadi anggota berbagai organisasi regional dan global.Indonesia, negara kepulauan terbesar di dunia, memiliki keanekaragaman geografi, budaya, dan bahasa. Setelah meraih kemerdekaan pada tahun 1945, Indonesia mengadopsi Pancasila sebagai dasar ideologi negara. Dengan perekonomian yang berkembang pesat, kekayaan alam yang melimpah, dan sektor pariwisata yang menarik, Indonesia juga menghadapi tantangan lingkungan dan kesenjangan ekonomi. Secara politik, Indonesia adalah negara demokratis dengan sistem pemerintahan presidensial. Indonesia aktif dalam hubungan internasional dan menjadi anggota berbagai organisasi regional dan global."}
+
       const response = await axios.post(`${mainUrl}/summary`, text);
-      if (response.status !== 201) {
-        throw new Error("Failed");
+
+      if (response.status !== 200) {
+        response.data = "Kami sedang menerima banyak permintaan respon, silakan coba sesaat lagi";
+        dispatcher(actionSetSummary(response.data)); // Menggunakan actionSetSummary sebagai action creator
+      } else {
+        dispatcher(actionSetSummary(response.data)); // Menggunakan actionSetSummary sebagai action creator
       }
-      dispatcher()
     } catch (error) {
-      console.log(error);
+      console.log(error, "error action creator.....................");
       throw error;
     }
   };
@@ -68,13 +75,16 @@ export const actionSetChatBot = (payload) => {
 export const chatChatBot = (text) => {
   return async (dispatcher) => {
     try {
-      const response = await axios.post(`${mainUrl}/chatbot`, text);
-      if (response.status !== 201) {
-        throw new Error("Failed");
+      // const response = { data: "Indonesia, negara kepulauan terbesar di dunia, memiliki keanekaragaman geografi, budaya, dan bahasa. Setelah meraih kemerdekaan pada tahun 1945, Indonesia mengadopsi Pancasila sebagai dasar ideologi negara. Dengan perekonomian yang berkembang pesat, kekayaan alam yang melimpah, dan sektor pariwisata yang menarik, Indonesia juga menghadapi tantangan lingkungan dan kesenjangan ekonomi. Secara politik, Indonesia adalah negara demokratis dengan sistem pemerintahan presidensial. Indonesia aktif dalam hubungan internasional dan menjadi anggota berbagai organisasi regional dan global.Indonesia, negara kepulauan terbesar di dunia, memiliki keanekaragaman geografi, budaya, dan bahasa. Setelah meraih kemerdekaan pada tahun 1945, Indonesia mengadopsi Pancasila sebagai dasar ideologi negara. Dengan perekonomian yang berkembang pesat, kekayaan alam yang melimpah, dan sektor pariwisata yang menarik, Indonesia juga menghadapi tantangan lingkungan dan kesenjangan ekonomi. Secara politik, Indonesia adalah negara demokratis dengan sistem pemerintahan presidensial. Indonesia aktif dalam hubungan internasional dan menjadi anggota berbagai organisasi regional dan global."}
+
+      if (response.status !== 200) {
+        response.data = "Kami sedang menerima banyak permintaan respon, silakan coba sesaat lagi";
+        dispatcher(actionSetChatBot(response.data)); // Menggunakan actionSetChatBot sebagai action creator
+      } else {
+        dispatcher(actionSetChatBot(response.data)); // Menggunakan actionSetChatBot sebagai action creator
       }
-      dispatcher()
     } catch (error) {
-      console.log(error);
+      console.log(error, "error action creator.....................");
       throw error;
     }
   };
@@ -90,13 +100,17 @@ export const actionSetCodingJS = (payload) => {
 export const chatCodingJS = (text) => {
   return async (dispatcher) => {
     try {
+      // const response = { data: "Indonesia, negara kepulauan terbesar di dunia, memiliki keanekaragaman geografi, budaya, dan bahasa. Setelah meraih kemerdekaan pada tahun 1945, Indonesia mengadopsi Pancasila sebagai dasar ideologi negara. Dengan perekonomian yang berkembang pesat, kekayaan alam yang melimpah, dan sektor pariwisata yang menarik, Indonesia juga menghadapi tantangan lingkungan dan kesenjangan ekonomi. Secara politik, Indonesia adalah negara demokratis dengan sistem pemerintahan presidensial. Indonesia aktif dalam hubungan internasional dan menjadi anggota berbagai organisasi regional dan global.Indonesia, negara kepulauan terbesar di dunia, memiliki keanekaragaman geografi, budaya, dan bahasa. Setelah meraih kemerdekaan pada tahun 1945, Indonesia mengadopsi Pancasila sebagai dasar ideologi negara. Dengan perekonomian yang berkembang pesat, kekayaan alam yang melimpah, dan sektor pariwisata yang menarik, Indonesia juga menghadapi tantangan lingkungan dan kesenjangan ekonomi. Secara politik, Indonesia adalah negara demokratis dengan sistem pemerintahan presidensial. Indonesia aktif dalam hubungan internasional dan menjadi anggota berbagai organisasi regional dan global."}
+
       const response = await axios.post(`${mainUrl}/jscoding`, text);
-      if (response.status !== 201) {
-        throw new Error("Failed");
+      if (response.status !== 200) {
+        response.data = "Kami sedang menerima banyak permintaan respon, silakan coba sesaat lagi";
+        dispatcher(actionSetCodingJS(response.data)); // Menggunakan actionSetCodingJS sebagai action creator
+      } else {
+        dispatcher(actionSetCodingJS(response.data)); // Menggunakan actionSetChatBot sebagai action creator
       }
-      dispatcher()
     } catch (error) {
-      console.log(error);
+      console.log(error, "error action creator.....................");
       throw error;
     }
   };
@@ -112,13 +126,17 @@ export const actionSetImage = (payload) => {
 export const chatImageGenerator = (text) => {
   return async (dispatcher) => {
     try {
+      // const response = { data: "Indonesia, negara kepulauan terbesar di dunia, memiliki keanekaragaman geografi, budaya, dan bahasa. Setelah meraih kemerdekaan pada tahun 1945, Indonesia mengadopsi Pancasila sebagai dasar ideologi negara. Dengan perekonomian yang berkembang pesat, kekayaan alam yang melimpah, dan sektor pariwisata yang menarik, Indonesia juga menghadapi tantangan lingkungan dan kesenjangan ekonomi. Secara politik, Indonesia adalah negara demokratis dengan sistem pemerintahan presidensial. Indonesia aktif dalam hubungan internasional dan menjadi anggota berbagai organisasi regional dan global.Indonesia, negara kepulauan terbesar di dunia, memiliki keanekaragaman geografi, budaya, dan bahasa. Setelah meraih kemerdekaan pada tahun 1945, Indonesia mengadopsi Pancasila sebagai dasar ideologi negara. Dengan perekonomian yang berkembang pesat, kekayaan alam yang melimpah, dan sektor pariwisata yang menarik, Indonesia juga menghadapi tantangan lingkungan dan kesenjangan ekonomi. Secara politik, Indonesia adalah negara demokratis dengan sistem pemerintahan presidensial. Indonesia aktif dalam hubungan internasional dan menjadi anggota berbagai organisasi regional dan global."}
+
       const response = await axios.post(`${mainUrl}/image_generator`, text);
-      if (response.status !== 201) {
-        throw new Error("Failed");
+      if (response.status !== 200) {
+        response.data = "Kami sedang menerima banyak permintaan respon, silakan coba sesaat lagi";
+        dispatcher(actionSetImage(response.data)); // Menggunakan actionSetImage sebagai action creator
+      } else {
+        dispatcher(actionSetImage(response.data)); // Menggunakan actionSetChatBot sebagai action creator
       }
-      dispatcher()
     } catch (error) {
-      console.log(error);
+      console.log(error, "error action creator.....................");
       throw error;
     }
   };

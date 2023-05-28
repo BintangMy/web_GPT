@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-const Profile = ({data}) => {
+const Profile = ({data, status}) => {
     return(
         <>
             <div className="profile lg:ml-60 flex gap-3 items-center">
@@ -15,7 +15,7 @@ const Profile = ({data}) => {
           />
           <div className=" text-white flex flex-col">
             <h1 className="name text-xl">{data[1]}</h1>
-            <h2 className="status text-sm">online</h2>
+            <h2 className="status text-sm">{!status ? "Online" : "Mengetik..."}</h2>
           </div>
         </div>
         </>
