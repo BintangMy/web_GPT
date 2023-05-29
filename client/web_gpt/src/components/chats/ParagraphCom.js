@@ -24,7 +24,7 @@ const ParagraphCom = () => {
   const [conversation, setConversation] = useState([]);
   const [loading, setLoading] = useState(null)
   const dispatcher = useDispatch();
-  const chatOpenAi = useSelector((state) => state.openAi.chatOpenAi);
+  const chatParagraph = useSelector((state) => state.openAi.chatParagraph);
   const chatUserRef = useRef(null);
 
   useEffect(() => {
@@ -41,11 +41,11 @@ const ParagraphCom = () => {
   };
 
   useEffect(() => {
-    if (chatOpenAi.length > 0) {
-      const botMessage = { sender: "bot", message: chatOpenAi };
+    if (chatParagraph.length > 0) {
+      const botMessage = { sender: "bot", message: chatParagraph };
       setConversation((prevConversation) => [...prevConversation, botMessage]);
     }
-  }, [chatOpenAi]);
+  }, [chatParagraph]);
 
   return (
     <>

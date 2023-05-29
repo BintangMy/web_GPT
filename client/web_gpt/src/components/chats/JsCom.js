@@ -8,23 +8,24 @@ import Footer from "../footer";
 import Warning from "../card/messages/Warning";
 import Profile from "../card/messages/Profile";
 import LoadingMessage from "../loading/LoadingMessage";
+import BotCode from "../card/messages/BotCode";
 
 const Summary = () => {
   const messageContoh = {
     bot1: "Hobiku menulis kode 👨‍💻, apakah kamu butuh bantuanku ?",
-    bot2: "Baik ini kodenya",
-    user: "Buatkan kode perhitungan sederhana dengan JS ?",
+    bot2: `let rows = 5; \nlet output = ''; \n\nfor (let i = 1; i <= rows; i++) { \n  for (let j = 1; j <= i; j++) { \n      output += '* ';\n  } \n  output += ${'\\n'};\n}\n\nconsole.log(output);`,
+    user: "Buatkan kode looping * membentuk segitiga ",
     dataProfile: [
-        "https://ik.imagekit.io/bintangtopup/webGPT/Ultraman-Lucu-PP-WA-20-dc59f.jpg?updatedAt=1685082766265",
-        "Ultra Code",
-      ],
-}
+      "https://ik.imagekit.io/bintangtopup/webGPT/Ultraman-Lucu-PP-WA-20-dc59f.jpg?updatedAt=1685082766265",
+      "Ultra Code",
+    ],
+  }
 
   const [userInput, setUserInput] = useState([]);
   const [conversation, setConversation] = useState([]);
   const [loading, setLoading] = useState(null)
   const dispatcher = useDispatch();
-  const chatOpenAi = useSelector((state) => state.openAi.chatOpenAi);
+  const chatCoding = useSelector((state) => state.openAi.chatCoding);
   const chatUserRef = useRef(null);
 
   useEffect(() => {
@@ -41,17 +42,17 @@ const Summary = () => {
   };
 
   useEffect(() => {
-    if (chatOpenAi.length > 0) {
-      const botMessage = { sender: "bot", message: chatOpenAi };
+    if (chatCoding.length > 0) {
+      const botMessage = { sender: "bot", message: chatCoding };
       setConversation((prevConversation) => [...prevConversation, botMessage]);
     }
-  }, [chatOpenAi]);
+  }, [chatCoding]);
 
   return (
     <>
       <div className="pt-2 h-screen px-1 bg-gray-700">
         {/* Profile */}
-        <Profile data={messageContoh.dataProfile} status={loading}/>
+        <Profile data={messageContoh.dataProfile} status={loading} />
         <div className="border-2 lg:ml-72 h-[92%] p-2 flex flex-col border-dashed rounded-lg border-gray-700">
           {/* chats */}
           <div
@@ -63,31 +64,27 @@ const Summary = () => {
             <Bot
               message={messageContoh.bot1}
               image={messageContoh.dataProfile[0]}
-              type ={"statis"}
+              type={"statis"}
             />
             {/* User */}
             <User message={messageContoh.user} />
-            <Bot
-              message={messageContoh.bot2}
-              image={messageContoh.dataProfile[0]}
-              type ={"statis"}
-            />
+
+            <BotCode image={messageContoh.dataProfile[0]} message={messageContoh.bot2} />
             {conversation.map((message, index) => {
               if (message.sender === "user") {
                 return <User key={index} message={message.message.text} />;
               } else if (message.sender === "bot") {
                 return (
-                  <Bot
+                  <BotCode
                     key={index}
                     message={message.message}
                     image={messageContoh.dataProfile[0]}
-                    type ={"dinamis"}
                   />
                 );
               }
               return null;
             })}
-            {loading ? <LoadingMessage image={messageContoh.dataProfile[0]}/> : null}
+            {loading ? <LoadingMessage image={messageContoh.dataProfile[0]} /> : null}
           </div>
           {/* Input */}
           <ChatBotInput textInput={handleInputText} />

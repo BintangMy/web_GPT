@@ -7,21 +7,24 @@ import {
 } from "../actionType/openAiType";
 
 const initialState = {
-  chatOpenAi: {}
+  chatSummaryReducer: {},
+  chatParagraph: {},
+  chatOpenAi:{},
+  chatCoding:{},
+  chatImage:{},
 };
 
 export const openAiReducer = (state = initialState, action) => {
-  console.log(action, 'ini data dari reducer swct..........')
   switch (action.type) {
     case AI_SUMMARY:
       return {
         ...state,
-        chatOpenAi: action.payload,
+        chatSummaryReducer: action.payload,
       };
     case AI_PARAGRAPH:
       return {
         ...state,
-        chatOpenAi: action.payload,
+        chatParagraph: action.payload,
       };
     case AI_CHAT_BOT:
       return {
@@ -31,12 +34,12 @@ export const openAiReducer = (state = initialState, action) => {
     case AI_JS_CODING:
       return {
         ...state,
-        chatOpenAi: action.payload,
+        chatCoding: action.payload,
       };
     case AI_IMAGE_GENERATOR:
       return {
         ...state,
-        chatOpenAi: action.payload,
+        chatImage: action.payload,
       };
     default:
       return state;

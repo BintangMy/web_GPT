@@ -12,8 +12,8 @@ import LoadingMessage from "../loading/LoadingMessage";
 const ChatBotCom = () => {
   const messageContoh = {
     bot1: "Ada yang bisa aku bantu ?",
-    bot2: "Nama Aku Ultramen Cosmos : )",
-    user: "Siapa Nama Kamu ?",
+    bot2: "Namaku Ultra bestie : )",
+    user: "Siapa nama kamu ?",
     dataProfile: [
         "https://ik.imagekit.io/bintangtopup/webGPT/Ultra.jpg?updatedAt=1685082766627",
         "Ultra Chats",

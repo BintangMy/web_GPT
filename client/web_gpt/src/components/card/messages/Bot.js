@@ -1,10 +1,11 @@
 import Image from "next/image";
 
+
 const Bot = ({message, image, type}) => {
   const paragraphs = message.split('\n');
   
   return (
-    !message ? null : (<div className="flex my-3  justify-start gap-2 mr-10">
+    !message ? null : (<div className="flex my-3 justify-start gap-2 mr-9">
       <Image
         loader={({ src }) => src}
         src={image}
@@ -15,7 +16,7 @@ const Bot = ({message, image, type}) => {
         style={{ maxWidth: "30px", maxHeight: "30px" }}
       />
       {type === "statis" ? (
-        <p className="bg-grayy  text-sm text-white p-2 rounded-md"
+        <p className="bg-grayy text-sm text-white p-2 rounded-md"
         style={{ whiteSpace: 'pre-line' }}>
           {message}
         </p>

@@ -13,11 +13,11 @@ import BotImage from "../card/messages/BotImage";
 const Summary = () => {
   const messageContoh = {
     bot1: "Cita-citaku adalah menjadi seorang pelukis handal 🎨",
-    bot2: "Baik ini gambarnya",
-    user: "robot kesepian yang memegang balon gambarlah dengan pensil dan cat air",
+    user: "Gambarkan astronot dan kucing sedang bermain basket diluar angakasa",
     dataProfile: [
       "https://ik.imagekit.io/bintangtopup/webGPT/ultra_image.jpg?updatedAt=1685082766595",
       "Ultra Image",
+      "https://ik.imagekit.io/bintangtopup/webGPT/ultraIMage.png?updatedAt=1685329638769",
     ],
   };
 
@@ -25,7 +25,7 @@ const Summary = () => {
   const [conversation, setConversation] = useState([]);
   const [loading, setLoading] = useState(null)
   const dispatcher = useDispatch();
-  const chatOpenAi = useSelector((state) => state.openAi.chatOpenAi);
+  const chatImage = useSelector((state) => state.openAi.chatImage);
   const chatUserRef = useRef(null);
 
   useEffect(() => {
@@ -42,11 +42,11 @@ const Summary = () => {
   };
 
   useEffect(() => {
-    if (chatOpenAi.length > 0) {
-      const botMessage = { sender: "bot", message: chatOpenAi };
+    if (chatImage.length > 0) {
+      const botMessage = { sender: "bot", message: chatImage };
       setConversation((prevConversation) => [...prevConversation, botMessage]);
     }
-  }, [chatOpenAi]);
+  }, [chatImage]);
 
   return (
     <>
@@ -68,12 +68,7 @@ const Summary = () => {
             />
             {/* User */}
             <User message={messageContoh.user} />
-            <Bot
-              message={messageContoh.bot2}
-              image={messageContoh.dataProfile[0]}
-              type ={"statis"}
-            />
-            <BotImage image={messageContoh.dataProfile[0]} imageAI={messageContoh.dataProfile[0]}/>
+            <BotImage image={messageContoh.dataProfile[0]} imageAI={messageContoh.dataProfile[2]}/>
             {conversation.map((message, index) => {
               if (message.sender === "user") {
                 return <User key={index} message={message.message.text} />;

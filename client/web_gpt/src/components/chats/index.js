@@ -12,8 +12,7 @@ import LoadingMessage from "../loading/LoadingMessage";
 const Summary = () => {
   const messageContoh = {
     bot1: "Ada yang bisa saya bantu ?",
-    bot2:
-      "Indonesia, negara kepulauan terbesar di dunia, memiliki keanekaragaman geografi, budaya, dan bahasa. Setelah meraih kemerdekaan pada tahun 1945, Indonesia mengadopsi Pancasila sebagai dasar ideologi negara. Dengan perekonomian yang berkembang pesat, kekayaan alam yang melimpah, dan sektor pariwisata yang menarik, Indonesia juga menghadapi tantangan lingkungan dan kesenjangan ekonomi. Secara politik, Indonesia adalah negara demokratis dengan sistem pemerintahan presidensial. Indonesia aktif dalam hubungan internasional dan menjadi anggota berbagai organisasi regional dan global.",
+    bot2: "Indonesia, negara kepulauan terbesar di dunia, memiliki keanekaragaman geografi, budaya, dan bahasa. Setelah meraih kemerdekaan pada tahun 1945, Indonesia mengadopsi Pancasila sebagai dasar ideologi negara. Dengan perekonomian yang berkembang pesat, kekayaan alam yang melimpah, dan sektor pariwisata yang menarik, Indonesia juga menghadapi tantangan lingkungan dan kesenjangan ekonomi. Secara politik, Indonesia adalah negara demokratis dengan sistem pemerintahan presidensial. Indonesia aktif dalam hubungan internasional dan menjadi anggota berbagai organisasi regional dan global.",
     user: "Buatkan Summary tentang Indonesia ?",
     dataProfile: [
       "https://ik.imagekit.io/bintangtopup/webGPT/ultrameng.jpg?updatedAt=1685023622427",
@@ -25,7 +24,7 @@ const Summary = () => {
   const [conversation, setConversation] = useState([]);
   const [loading, setLoading] = useState(null)
   const dispatcher = useDispatch();
-  const chatOpenAi = useSelector((state) => state.openAi.chatOpenAi);
+  const chatSummaryReducer = useSelector((state) => state.openAi.chatSummaryReducer);
   const chatUserRef = useRef(null);
 
   useEffect(() => {
@@ -42,11 +41,11 @@ const Summary = () => {
   };
 
   useEffect(() => {
-    if (chatOpenAi.length > 0) {
-      const botMessage = { sender: "bot", message: chatOpenAi };
+    if (chatSummaryReducer.length > 0) {
+      const botMessage = { sender: "bot", message: chatSummaryReducer };
       setConversation((prevConversation) => [...prevConversation, botMessage]);
     }
-  }, [chatOpenAi]);
+  }, [chatSummaryReducer]);
 
   return (
     <>
@@ -101,3 +100,7 @@ const Summary = () => {
 };
 
 export default Summary;
+
+
+
+

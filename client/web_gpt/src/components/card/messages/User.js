@@ -3,7 +3,7 @@ import Image from "next/image";
 const User = ({message}) => {
     return (
         <>
-            <div className="flex my-3 justify-end gap-2 ml-8">
+            <div className="flex my-3 justify-end gap-2 ml-9">
                 <p className="bg-grayy  text-sm text-white p-2 rounded-md">
                     {message}
                 </p>

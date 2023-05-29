@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.1.8",
+    "@uiw/codemirror-theme-aura": "^4.20.2",
+    "@uiw/react-codemirror": "^4.20.2",
     "axios": "^1.4.0",
     "file-saver": "^2.0.5",
     "next": "13.4.3",
