@@ -98,9 +98,9 @@ export const chatCodingJS = (text) => {
       if (response.status !== 200) {
         response.data =
           "Kami sedang menerima banyak permintaan respon, silakan coba sesaat lagi";
-        dispatcher(actionSetCodingJS(response.data)); // Menggunakan actionSetCodingJS sebagai action creator
+        dispatcher(actionSetCodingJS(response.data)); 
       } else {
-        dispatcher(actionSetCodingJS(response.data)); // Menggunakan actionSetChatBot sebagai action creator
+        dispatcher(actionSetCodingJS(response.data)); 
       }
     } catch (error) {
       console.log(error);
