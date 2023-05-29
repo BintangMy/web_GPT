@@ -49,10 +49,10 @@ const Summary = () => {
 
   return (
     <>
-      <div className="pt-2 h-screen px-1 bg-gray-700">
+      <div className="fixed pt-2 h-screen px-1 bg-gray-700">
         {/* Profile */}
         <Profile data={messageContoh.dataProfile} status={loading}/>
-        <div className="border-2 lg:ml-72 h-[92%] p-2 flex flex-col border-dashed rounded-lg border-gray-700">
+        <div className="border-2 lg:ml-72 h-[88%] md:h-[92%] lg:h-[92%]  p-2 flex flex-col border-dashed rounded-lg border-gray-700">
           {/* chats */}
           <div
             ref={chatUserRef}
