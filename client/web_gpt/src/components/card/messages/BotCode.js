@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { aura } from "@uiw/codemirror-theme-aura";
 import { javascript } from "@codemirror/lang-javascript";
@@ -11,6 +12,30 @@ const BotCode = ({ image, message }) => {
       "https://ik.imagekit.io/bintangtopup/webGPT/Ultraman-Lucu-PP-WA-20-dc59f.jpg?updatedAt=1685082766265",
     ],
   };
+
+  const [codeMirrorWidth, setCodeMirrorWidth] = useState(200);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+
+      if (screenWidth >= 1024) {
+        setCodeMirrorWidth(500);
+      } else if (screenWidth >= 768) {
+        setCodeMirrorWidth(300);
+      } else {
+        setCodeMirrorWidth(200);
+      }
+    };
+
+    handleResize(); // Call the function once to set the initial width
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <Bot
@@ -29,27 +54,23 @@ const BotCode = ({ image, message }) => {
           alt="bot_image"
           style={{ maxWidth: "30px", maxHeight: "30px" }}
         />
-        <div className="flex justify-end content-end">
+        <div className=" flex justify-end content-end">
           <div
             className="bg-grayy text-sm text-white p-2 rounded-md"
             style={{ whiteSpace: "pre-line" }}
-            
           >
             <CodeMirror
+              width={`${codeMirrorWidth}px`}
               value={message}
               theme={aura}
               readOnly
               extensions={[javascript({ jsx: true })]}
             />
           </div>
-          {/* <a className=" text-white text-2xl p-1 rounded-md  left-60 bg-black bg-opacity-50" >
-        <FiDownload/>
-      </a> */}
         </div>
       </div>
-
-
     </>
   );
 };
+
 export default BotCode;
