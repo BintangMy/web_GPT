@@ -127,7 +127,7 @@ const Sidebar = () => {
           </ul>
 
           <div className={`mt-[50%] md:mt-[39%] lg:mt-[45%] flex flex-col gap-1 items-center text-white ${!open && "invisible"}`}>
-            <p className="text-sm">Biar AInya makin GGWP</p>
+            <p className="text-sm">Support Me</p>
             <a
               href="https://saweria.co/bintangmochamad"
               className={`flex justify-center mx-2  py-2 px-8 lg:px-14 gap-2 rounded-md  text-xl text-center cursor-pointer bg-yellow-500 hover:bg-yellow-600

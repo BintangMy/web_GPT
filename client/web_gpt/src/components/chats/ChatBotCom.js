@@ -28,8 +28,8 @@ const ChatBotCom = () => {
   const chatUserRef = useRef(null);
 
   useEffect(() => {
-    chatUserRef.current.scrollIntoView({ behavior: "smooth" });
-  }, [userInput]);
+    chatUserRef.current.scrollTop = chatUserRef.current.scrollHeight;
+  }, [userInput, conversation]);
 
   const handleInputText = async (text) => {
     setLoading(true); // Set loading state to true
@@ -88,6 +88,7 @@ const ChatBotCom = () => {
               return null;
             })}
             {loading ? <LoadingMessage image={messageContoh.dataProfile[0]}/> : null}
+            <div ref={chatUserRef}></div>
           </div>
           {/* Input */}
           <ChatBotInput textInput={handleInputText} />

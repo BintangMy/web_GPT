@@ -22,14 +22,14 @@ const Summary = () => {
 
   const [userInput, setUserInput] = useState([]);
   const [conversation, setConversation] = useState([]);
-  const [loading, setLoading] = useState(null)
+  const [loading, setLoading] = useState(null);
   const dispatcher = useDispatch();
   const chatSummaryReducer = useSelector((state) => state.openAi.chatSummaryReducer);
   const chatUserRef = useRef(null);
 
   useEffect(() => {
-    chatUserRef.current.scrollIntoView({ behavior: "smooth" });
-  }, [userInput]);
+    chatUserRef.current.scrollTop = chatUserRef.current.scrollHeight;
+  }, [userInput, conversation]);
 
   const handleInputText = async (text) => {
     setLoading(true); // Set loading state to true
@@ -51,7 +51,7 @@ const Summary = () => {
     <>
       <div className="fixed pt-2 h-screen px-1 bg-gray-700">
         {/* Profile */}
-        <Profile data={messageContoh.dataProfile} status={loading}/>
+        <Profile data={messageContoh.dataProfile} status={loading} />
         <div className="border-2 lg:ml-72 h-[86%] md:h-[92%] lg:h-[92%]  p-2 flex flex-col border-dashed rounded-lg border-gray-700">
           {/* chats */}
           <div
@@ -63,14 +63,14 @@ const Summary = () => {
             <Bot
               message={messageContoh.bot1}
               image={messageContoh.dataProfile[0]}
-              type ={"statis"}
+              type={"statis"}
             />
             {/* User */}
             <User message={messageContoh.user} />
             <Bot
               message={messageContoh.bot2}
               image={messageContoh.dataProfile[0]}
-              type ={"statis"}
+              type={"statis"}
             />
             {conversation.map((message, index) => {
               if (message.sender === "user") {
@@ -81,13 +81,14 @@ const Summary = () => {
                     key={index}
                     message={message.message}
                     image={messageContoh.dataProfile[0]}
-                    type ={"dinamis"}
+                    type={"dinamis"}
                   />
                 );
               }
               return null;
             })}
-            {loading ? <LoadingMessage image={messageContoh.dataProfile[0]}/> : null}
+            {loading ? <LoadingMessage image={messageContoh.dataProfile[0]} /> : null}
+            <div ref={chatUserRef}></div>
           </div>
           {/* Input */}
           <ChatBotInput textInput={handleInputText} />
@@ -100,7 +101,3 @@ const Summary = () => {
 };
 
 export default Summary;
-
-
-
-
