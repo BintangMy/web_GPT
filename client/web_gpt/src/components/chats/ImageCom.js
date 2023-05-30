@@ -12,7 +12,7 @@ import BotImage from "../card/messages/BotImage";
 
 const Summary = () => {
   const messageContoh = {
-    bot1: "Cita-citaku adalah menjadi seorang pelukis handal 🎨",
+    bot1: "Cita-citaku ingin menjadi seorang pelukis handal 🎨",
     user: "Gambarkan astronot dan kucing sedang bermain basket diluar angakasa",
     dataProfile: [
       "https://ik.imagekit.io/bintangtopup/webGPT/ultra_image.jpg?updatedAt=1685082766595",
