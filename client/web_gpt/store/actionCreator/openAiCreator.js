@@ -7,7 +7,8 @@ import {
 } from "../actionType/openAiType";
 import axios from "axios";
 
-const mainUrl = "https://ultraserver.vercel.app";
+const mainUrl = process.env.MAIN_URL;
+
 
 export const actionSetParagraph = (payload) => {
   return {
