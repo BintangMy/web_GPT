@@ -11,7 +11,7 @@ import LoadingMessage from "../loading/LoadingMessage";
 
 const ChatBotCom = () => {
   const messageContoh = {
-    bot1: "Aku bisa jadi teman curhat kamu 😭",
+    bot1: "Kamu butuh teman, aku bisa jadi teman kamu 😭",
     bot2: "Namaku Ultra bestie : )",
     user: "Siapa nama kamu ?",
     dataProfile: [
