@@ -11,7 +11,7 @@ import LoadingMessage from "../loading/LoadingMessage";
 
 const ParagraphCom = () => {
   const messageContoh = {
-    bot1: "Ada yang bisa saya bantu ?",
+    bot1: "Aku tau semuanya yang ada di internet ✌️",
     bot2: "Indonesia adalah negara kepulauan yang terletak di Asia Tenggara dan merupakan salah satu negara terbesar di dunia dalam hal populasi.Dikenal sebagai negeri seribu pulau, Indonesia memiliki kekayaan alam yang melimpah, keindahan alam yangmenakjubkan, dan keragaman budaya yang kaya. \n \n Dari ujung barat hingga timur, Indonesia menawarkan panorama yang memukau.Pegunungan yang menjulang tinggi, seperti Gunung Bromo dan Gunung Rinjani, menawarkan pengalaman mendaki yang menakjubkan.Selain itu, keindahan alam Indonesia terlihat dalam keberagaman pulau- pulau tropisnya, seperti Bali denganpantai - pantai yang indah, Lombok dengan keindahan Gili yang mempesona, dan Raja Ampat dengan kekayaan bawah laut yang luar biasa. \n \n ....",
     user: "Buatkan Paragraph tentang Indonesia ?",
     dataProfile: [
